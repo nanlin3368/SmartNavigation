@@ -1,0 +1,86 @@
+[
+    {
+        "title": "PDFCraft",
+        "icon": "PDFCraft_icon.webp",
+        "url": "http://pdfcraft.devtoolcafe.com/zh",
+        "description": "基于浏览器的隐私级 PDF 处理矩阵，支持近百项专业编辑与转换功能，坚持本地运行逻辑，确保文档数据绝不上传云端",
+        "category": "文档办公"
+    },
+    {
+        "title": "爱PPT",
+        "icon": "爱PPT_icon.webp",
+        "url": "https://www.2ppt.com",
+        "description": "智算时代的一键式演示文稿生成平台，依托海量专业模板库与 AI 逻辑，实现从创意标题到高品质 PPT 方案的极速转化",
+        "category": "文档办公"
+    },
+    {
+        "title": "简历模板资源网",
+        "icon": "简历模板资源网_icon.webp",
+        "url": "https://www.jianlimoban-ziyuan.com",
+        "description": "专注于职场竞争力的文书资源库，聚合海量可编辑的 Word 简历模板，旨在为求职者提供专业、标准且高效的排版方案",
+        "category": "文档办公"
+    },
+    {
+        "title": "QwikPDF",
+        "icon": "QwikPDF_icon.webp",
+        "url": "https://qwikpdf.com",
+        "description": "追求极致速度的轻量化 PDF 处理引擎，通过精简的交互设计提供流畅的文档合并、压缩与格式转换体验，实现即开即办",
+        "category": "文档办公"
+    },
+    {
+        "title": "iLovePDF",
+        "icon": "iLovePDF_icon.webp",
+        "url": "https://www.ilovepdf.com/zh-cn",
+        "description": "全球化的全功能 PDF 在线处理枢纽，提供覆盖全生命周期的文档编辑工具，以稳定、高效的服务助力个人与企业数字化办公",
+        "category": "文档办公"
+    },
+    {
+        "title": "PDF24",
+        "icon": "PDF24_icon.webp",
+        "url": "https://tools.pdf24.org/zh/all-tools",
+        "description": "源自德国的免费在线 PDF 工具包，集文档创建、合并、加密及高级编辑功能于一体，是公认的跨平台、无限制办公利器",
+        "category": "文档办公"
+    },
+    {
+        "title": "FileUNZIP",
+        "icon": "FileUNZIP_icon.webp",
+        "url": "https://cn.fileunzip.com",
+        "description": "垂直于云端解压缩领域的效率利器，支持 RAR、7Z 等多种加密格式的在线解压与封包，彻底解决跨设备文件读取障碍",
+        "category": "文档办公"
+    },
+    {
+        "title": "TinyWow",
+        "icon": "TinyWow_icon.webp",
+        "url": "https://tinywow.com",
+        "description": "全维度数字化处理矩阵，提供涵盖 PDF、视频及图像处理的超两百项免费功能，主打零门槛、免注册的交互体验，是极致简约的办公生产力引擎",
+        "category": "文档办公"
+    },
+    {
+        "title": "Smallpdf",
+        "icon": "Smallpdf_icon.webp",
+        "url": "https://smallpdf.com",
+        "description": "全球领先的数字化文档处理中枢，深度集成 PDF 压缩、格式转换及智能编辑等全维度工具矩阵，通过极简的交互链路与云端协作技术，全面重构现代办公的文档处理效能",
+        "category": "文档办公"
+    },
+    {
+        "title": "PDFuck",
+        "icon": "PDFuck_icon.webp",
+        "url": "https://pdfuck.com/zh",
+        "description": "完全免费且安全的在线 PDF 工具集，支持合并、分割及转换等 40 多种功能。所有处理均在浏览器本地完成，文件无需上传，在保障隐私的同时实现极速编辑",
+        "category": "文档办公"
+    },
+    {
+        "title": "i2PDF",
+        "icon": "i2PDF_icon.webp",
+        "url": "https://www.i2pdf.com/zh",
+        "description": "基于浏览器的 PDF 文档处理平台，集成格式转换、页面编辑、数据压缩及 OCR 文字识别功能，支持数字文档的标准化整理、加密与优化，实现全流程在线化文档加工",
+        "category": "文档办公"
+    },
+    {
+        "title": "PDFTool",
+        "icon": "PDFTool_icon.webp",
+        "url": "https://www.pdftool.cc/zh",
+        "description": "在线 PDF 处理工具集，涵盖文件合并、拆分、压缩及多格式双向转换功能，支持添加水印、电子签名与 OCR 识别，并集成 LLMs.txt 生成与 AI 服务检测等新兴能力",
+        "category": "文档办公"
+    }
+]

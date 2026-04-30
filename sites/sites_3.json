@@ -1,0 +1,44 @@
+[
+    {
+        "title": "SSR-V2ray-Trojan机场推荐",
+        "icon": "SSR-V2ray-Trojan机场推荐_icon.webp",
+        "url": "https://github.com/hwanz/SSR-V2ray-Trojan",
+        "description": "深度聚合网络协议相关的前沿资讯与技术评测，通过系统化的选型建议与数据反馈，助力用户构建稳定可靠的互联环境",
+        "category": "项目汇总"
+    },
+    {
+        "title": "awesome-shizuku",
+        "icon": "awesome-shizuku_icon.webp",
+        "url": "https://github.com/timschneeb/awesome-shizuku/blob/master/README_cn.md",
+        "description": "精选 Shizuku 生态应用集锦，全方位展示调用 Android 系统底层接口的黑科技工具，是发掘移动端进阶功能的硬核指南",
+        "category": "项目汇总"
+    },
+    {
+        "title": "Public APIs",
+        "icon": "Public_APIs_icon.webp",
+        "url": "https://github.com/public-apis/public-apis",
+        "description": "全球最大的开源 API 资源库，汇集上千种涵盖各领域的公共接口，是开发者进行原型快速验证与数据集成的首选宝库",
+        "category": "项目汇总"
+    },
+    {
+        "title": "GitHub中文排行榜",
+        "icon": "GitHub中文排行榜_icon.webp",
+        "url": "https://github.com/GrowingGit/GitHub-Chinese-Top-Charts",
+        "description": "专门收集与整理 GitHub 上高品质的中文开源项目，通过多维度的热度追踪与趋势分析，精准捕捉华语技术圈的创新动向",
+        "category": "项目汇总"
+    },
+    {
+        "title": "TelegramGroup",
+        "icon": "TelegramGroup_icon.webp",
+        "url": "https://github.com/itgoyo/TelegramGroup",
+        "description": "大规模数字化社群索引枢纽，深度聚合上万个优质群组、频道与机器人资源，是实现跨领域信息交互与资源获取的连接器",
+        "category": "项目汇总"
+    },
+    {
+        "title": "百分之千-定制版应用收藏",
+        "icon": "百分之千_icon.webp",
+        "url": "https://gitee.com/ww3w/dzb",
+        "description": "深度发掘厂商定制版纯净应用，提供上千款精简版软件的详细评测与选择建议，助力用户摆脱臃肿广告，回归极致体验",
+        "category": "项目汇总"
+    }
+]

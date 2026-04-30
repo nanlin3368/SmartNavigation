@@ -1,0 +1,44 @@
+[
+    {
+        "title": "视频大师",
+        "icon": "视频大师_icon.webp",
+        "url": "https://www.shipindashi.cn",
+        "description": "全能型在线视频处理枢纽，深度集成格式转换、压缩及智能去水印等核心功能，支持视频倒放与特效制作，大幅降低后期创作门槛",
+        "category": "媒体创作"
+    },
+    {
+        "title": "文本转语音",
+        "icon": "文本转语音_icon.webp",
+        "url": "https://text2voice.cc",
+        "description": "高保真在线 TTS 语音合成平台，内置先进的微软神经网络语音技术，提供多元化的语态风格与多国语言支持，是自媒体配音的高效生产力利器",
+        "category": "媒体创作"
+    },
+    {
+        "title": "视频压缩",
+        "icon": "视频压缩_icon.webp",
+        "url": "https://videocompressors.com/zh",
+        "description": "专业的免费在线视频压缩工具，支持最高90%的压缩率，无需注册上传，全本地处理确保隐私安全，支持Discord、微信、邮件视频压缩，，无文件大小限制且无水印，实现极速高清压缩",
+        "category": "媒体创作"
+    },
+    {
+        "title": "视频转JPG",
+        "icon": "视频转JPG_icon.webp",
+        "url": "https://videotojpg.com/zh",
+        "description": "免费在线视频截图工具，支持从 MP4、MOV 等多种格式视频中提取高质量图片，本地处理，保障隐私不上传，并具备智能模糊检测与批量打包功能",
+        "category": "媒体创作"
+    },
+    {
+        "title": "VERT",
+        "icon": "VERT_icon.webp",
+        "url": "https://vert.sh",
+        "description": "多功能在线格式转换器，采用端侧处理技术，图片、音频及文档的转换均在本地完成，确保隐私与速度，支持数百种格式互转，无文件大小限制，提供极致简约且高效的转换体验",
+        "category": "媒体创作"
+    },
+    {
+        "title": "视频工具",
+        "icon": "视频工具_icon.webp",
+        "url": "https://tools.video/zh-CN",
+        "description": "全能型在线视频处理平台，提供压缩、转换、裁剪、变速及滤镜等丰富功能，界面简洁无广告，支持视频与音频的快速编辑，无需下载安装即可在浏览器中实现高效的媒体创作",
+        "category": "媒体创作"
+    }
+]

@@ -1,0 +1,100 @@
+[
+    {
+        "title": "Google Fonts",
+        "icon": "Google_Fonts_icon.webp",
+        "url": "https://fonts.google.com/icons",
+        "description": "谷歌官方出品的全球化字体与符号资源库，遵循 Material Design 体系，提供高度可自定义的变体调节，是交互设计的工业标准",
+        "category": "视觉灵感"
+    },
+    {
+        "title": "svgl",
+        "icon": "svgl_icon.webp",
+        "url": "https://svgl.app",
+        "description": "顶级的开源矢量标识资源库，深度聚合全球主流品牌与技术堆栈的 SVG Logo，提供纯净的原始代码与极致的检索交互体验",
+        "category": "视觉灵感"
+    },
+    {
+        "title": "Heroicons",
+        "icon": "Heroicons_icon.webp",
+        "url": "https://heroicons.com",
+        "description": "现代网页设计的审美标杆，由 Tailwind 团队打造的手工级精简 SVG 图标集，完美适配前端框架并支持一键代码复用",
+        "category": "视觉灵感"
+    },
+    {
+        "title": "Remix Icon",
+        "icon": "Remix_Icon_icon.webp",
+        "url": "https://remixicon.com",
+        "description": "精美优雅的开源中性符号系统，风格高度一致且覆盖全维度场景，支持矢量下载与商业授权，是构建系统化 UI 的核心资产",
+        "category": "视觉灵感"
+    },
+    {
+        "title": "Uiverse",
+        "icon": "Uiverse_icon.webp",
+        "url": "https://uiverse.io",
+        "description": "全球领先的开源 UI 元素实验室，汇聚由 HTML 与 CSS 构建的精美交互组件，旨在为前端开发与视觉设计注入无限创意灵感",
+        "category": "视觉灵感"
+    },  
+    {
+        "title": "APPLORE",
+        "icon": "APPLORE_icon.webp",
+        "url": "https://app.uiboy.com",
+        "description": "专注于移动端界面美学的灵感探索平台，通过对海量精美 App 图标与 UI 案例的系统化收录，助力设计师捕捉前沿视觉动向",
+        "category": "视觉灵感"
+    },
+    {
+        "title": "Unsplash",
+        "icon": "Unsplash_icon.webp",
+        "url": "https://unsplash.com",
+        "description": "全球顶尖的高清摄影创作社区，提供极具美感且无版权限制的高质量影像素材，是数字化内容创作与视觉叙事的灵感源泉",
+        "category": "视觉灵感"
+    },
+    {
+        "title": "哲风壁纸",
+        "icon": "哲风壁纸_icon.webp",
+        "url": "https://haowallpaper.com",
+        "description": "高品质视觉美学积淀池，提供从 4K 到 8K 级别的超清壁纸资源，涵盖多元化艺术风格，旨在重塑数字设备的桌面感官体验",
+        "category": "视觉灵感"
+    },
+    {
+        "title": "创意匹配 Emoji",
+        "icon": "创意匹配_Emoji_icon.webp",
+        "url": "https://emojidir.com/zh-CN",
+        "description": "全平台表情符号创意引擎，深度收录数千款精制 3D 视觉表情，为社交互动与内容创作提供极具表现力的视觉辅助元素",
+        "category": "视觉灵感"
+    },
+    {
+        "title": "阿里巴巴矢量图标库",
+        "icon": "阿里巴巴矢量图标库_icon.webp",
+        "url": "https://www.iconfont.cn",
+        "description": "国内功能最完备的图标内容协作平台，汇聚海量专业设计师原创的矢量素材，为互联网产品提供系统化的视觉符号解决方案",
+        "category": "视觉灵感"
+    },
+    {
+        "title": "Undraw",
+        "icon": "Undraw_icon.webp",
+        "url": "https://undraw.co/illustrations",
+        "description": "数字化产品设计的“插画百科全书”，提供可高度自定义色彩的开源矢量插画库，助力开发者轻松构建具有现代感的交互界面",
+        "category": "视觉灵感"
+    },
+    {
+        "title": "Lucide",
+        "icon": "Lucide_icon.webp",
+        "url": "https://lucide.dev",
+        "description": "现代网页设计的灵感源泉，风格极简且高度一致的开源图标系统，是构建高品质 UI 界面、提升品牌视觉统一性的首选符号库",
+        "category": "视觉灵感"
+    },
+    {
+        "title": "2DWallpapers",
+        "icon": "2DWallpapers_icon.webp",
+        "url": "https://www.2dwallpapers.com",
+        "description": "动漫与游戏主题壁纸获取平台，深度归档二次元及数字艺术作品，提供无水印原画资源下载，支持多题材标签索引，实现高清晰度静态视觉素材的快速预览与检索",
+        "category": "视觉灵感"
+    },
+    {
+        "title": "Font",
+        "icon": "Font_icon.webp",
+        "url": "https://font.icu",
+        "description": "",
+        "category": "视觉灵感"
+    }
+]

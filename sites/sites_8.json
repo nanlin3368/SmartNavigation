@@ -1,0 +1,58 @@
+[
+    {
+        "title": "抠抠图",
+        "icon": "抠抠图_icon.webp",
+        "url": "https://www.koukoutu.com",
+        "description": "智能化的在线 AI 抠图利器，凭借像素级的边缘识别算法，实现复杂背景的秒级剥离与图像批量处理，极速提升修图效率",
+        "category": "图像处理"
+    },
+    {
+        "title": "Shutterstock Create",
+        "icon": "Shutterstock_Create_icon.webp",
+        "url": "https://www.shutterstock.com/zh/image-design-tools",
+        "description": "专业级的在线图形设计套件，集成前沿 AI 算法辅助构图、背景移除及高保真压缩，为视觉内容创作提供全链路技术支持",
+        "category": "图像处理"
+    },
+    {
+        "title": "Squoosh",
+        "icon": "Squoosh_icon.webp",
+        "url": "https://squoosh.app",
+        "description": "谷歌出品的顶尖图像压缩引擎，通过先进的算法实现极致的体积优化与画质平衡，支持多种现代图像格式的即时转换预览",
+        "category": "图像处理"
+    },
+    {
+        "title": "To WebP",
+        "icon": "To_WebP_icon.webp",
+        "url": "https://towebp.io",
+        "description": "专注于 WebP 格式转化的轻量化工具，旨在优化网页加载性能，提供高保真的无损转换方案，是前端开发与资源优化的必备利器",
+        "category": "图像处理"
+    },
+    {
+        "title": "在线图片编辑",
+        "icon": "在线图片编辑_icon.webp",
+        "url": "https://llccj.cn",
+        "description": "专业、安全、高效的在线图片处理工具，支持裁剪、无缝长图拼接、胶片滤镜及马赛克处理，无需注册即可实现高清导出，所有操作均在浏览器本地完成，无需上传，百分百保障隐私安全",
+        "category": "图像处理"
+    },
+    {
+        "title": "iLoveIMG",
+        "icon": "iLoveIMG_icon.webp",
+        "url": "https://www.iloveimg.com/zh-cn",
+        "description": "全能型在线图片处理工具，集压缩、调整大小、格式转换及水印添加等功能于一体，界面简洁直观，支持批量操作，是提升日常办公与图像管理效率的利器",
+        "category": "图像处理"
+    },
+    {
+        "title": "ImageOnline",
+        "icon": "ImageOnline_co_icon.webp",
+        "url": "https://imageonline.co/cn",
+        "description": "终极免费在线工具套件，探索超过 250 多个专业实用程序。编辑照片、转换视频、制作 GIF、测试硬件和管理 PDF，100% 免费、私密且极其快速",
+        "category": "图像处理"
+    },
+    {
+        "title": "imageonline",
+        "icon": "imageonline_io_icon.webp",
+        "url": "https://imageonline.io",
+        "description": "免费的在线图像编辑套件，集成压缩、裁剪、尺寸调整及多格式互转等 200 余种工具，支持在浏览器端直接完成图像增强与水印处理，构建全流程数字图像加工处理系统",
+        "category": "图像处理"
+    }
+]

@@ -1,0 +1,37 @@
+[
+    {
+        "title": "MT论坛",
+        "icon": "MT论坛_icon.webp",
+        "url": "https://bbs.binmt.cc",
+        "description": "深耕移动端逆向工程与底层开发的技术阵地，通过高门槛的内容积淀，驱动移动软件生态的深度探索与汉化协作",
+        "category": "技术社区"
+    },
+    {
+        "title": "Oschina",
+        "icon": "Oschina_icon.webp",
+        "url": "https://www.oschina.net",
+        "description": "中国开源软件生态的先驱引擎，致力于技术价值的传播与开发者能力的进阶，构建从代码库到技术资讯的全链条服务",
+        "category": "技术社区"
+    },
+    {
+        "title": "博客园",
+        "icon": "博客园_icon.webp",
+        "url": "https://www.cnblogs.com",
+        "description": "秉承纯粹主义的技术沉淀空间，以深度长文和严谨的学术氛围为特色，旨在通过高质量的原创博文守护开发者知识基石",
+        "category": "技术社区"
+    },
+    {
+        "title": "51CTO博客",
+        "icon": "51CTO博客_icon.webp",
+        "url": "https://blog.51cto.com",
+        "description": "针对企业级应用与前沿架构的技术实战高地，侧重于数字化转型背景下的技术落地经验，助力 IT 从业者构建体系化知识架构",
+        "category": "技术社区"
+    },
+    {
+        "title": "CSDN",
+        "icon": "CSDN_icon.webp",
+        "url": "https://www.csdn.net",
+        "description": "全场景中文开发者生产力矩阵，依托海量的底层资源储备与技术问答体系，赋能从学习到实战的软件生命全周期",
+        "category": "GitHub项目"
+    }
+]
