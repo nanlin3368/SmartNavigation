@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" id="themeColorMeta" content="#e6e7ee" />
+    <title>智汇导航</title>
+    <!-- 禁止浏览器刷新时恢复滚动位置，保证入场动画从顶部开始 -->
+    <script>history.scrollRestoration = 'manual'; window.scrollTo(0, 0);</script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'SF Pro Display', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+        -webkit-tap-highlight-color: transparent; /* 全局禁用点击高亮 */
+      }
+
+      :root {
+        --primary-bg: #e6e7ee;
+        --secondary-bg: #ffffff;
+        --shadow-light: #ffffff;
+        --shadow-dark: #d1d9e6;
+        --accent-color: #667eea;
+        --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --success-color: #4ecdc4;
+        --danger-color: #ff6b6b;
+        --warning-color: #feca57;
+        --text-primary: #2d3748;
+        --text-secondary: #718096;
+        --glass-bg: rgba(255, 255, 255, 0.25);
+        --glass-border: rgba(255, 255, 255, 0.18);
+      }
+
+      body {
+        background: var(--primary-bg);
+        color: var(--text-primary);
+        min-height: 100vh;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: pageLoad 0.8s ease;
+      }
+
+      /* ── 主题切换平滑过渡 ── */
+      /* 只在 :root 上过渡 CSS 变量，避免通配符 * 导致全量元素重绘卡顿 */
+      :root {
+        transition:
+          --primary-bg 0s,   /* CSS 变量本身不可直接 transition，靠下方 color-scheme 触发 */
+          color-scheme 0.4s;
+      }
+      /* 真正让颜色丝滑的方案：只给固定数量的结构层加 transition */
+      body.theme-transitioning {
+        transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                    color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      body.theme-transitioning .container,
+      body.theme-transitioning header,
+      body.theme-transitioning .search-box,
+      body.theme-transitioning .category-btn,
+      body.theme-transitioning .tool-card,
+      body.theme-transitioning .tool-link,
+      body.theme-transitioning footer,
+      body.theme-transitioning #themeToggle,
+      body.theme-transitioning #backToTop {
+        transition:
+          background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+          background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+          color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+          box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+      }
+
+      @keyframes pageLoad {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1400px;
+        background: var(--primary-bg);
+        border-radius: 30px;
+        padding: 40px;
+        box-shadow: 20px 20px 60px var(--shadow-dark),
+          -20px -20px 60px var(--shadow-light);
+        margin-top: 20px;
+        transition: box-shadow 0.3s ease;
+        animation: containerFloat 1s ease 0.2s both;
+      }
+
+      @keyframes containerFloat {
+        from {
+          opacity: 0;
+          transform: translateY(30px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .container:hover {
+        box-shadow: 25px 25px 70px var(--shadow-dark),
+          -25px -25px 70px var(--shadow-light);
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 30px;
+        background: var(--primary-bg);
+        border-radius: 25px;
+        box-shadow: 10px 10px 20px var(--shadow-dark),
+          -10px -10px 20px var(--shadow-light);
+        animation: headerSlide 0.8s ease 0.4s both;
+      }
+
+      @keyframes headerSlide {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1 {
+        font-size: 3.2rem;
+        margin-bottom: 15px;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
+        animation: titleGlow 3s ease-in-out infinite alternate;
+      }
+
+      @keyframes titleGlow {
+        from {
+          filter: brightness(1);
+        }
+        to {
+          filter: brightness(1.2);
+        }
+      }
+
+      .subtitle {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin-bottom: 30px;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .search-container {
+        margin-bottom: 40px;
+        display: flex;
+        justify-content: center;
+        animation: searchSlide 0.8s ease 0.6s both;
+      }
+
+      @keyframes searchSlide {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .search-box {
+        width: 100%;
+        max-width: 600px;
+        padding: 18px 25px;
+        background: var(--primary-bg);
+        border: none;
+        border-radius: 25px;
+        color: var(--text-primary);
+        font-size: 1.1rem;
+        font-weight: 500;
+        box-shadow: inset 8px 8px 16px var(--shadow-dark),
+          inset -8px -8px 16px var(--shadow-light);
+        transition: all 0.3s ease;
+      }
+
+      .search-box:focus {
+        outline: none;
+        box-shadow: inset 10px 10px 20px var(--shadow-dark),
+          inset -10px -10px 20px var(--shadow-light),
+          0 0 0 3px rgba(102, 126, 234, 0.2);
+      }
+
+      .categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 12px;
+        margin-bottom: 40px;
+        animation: categoriesSlide 0.8s ease 0.8s both;
+      }
+
+      @keyframes categoriesSlide {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .category-btn {
+        padding: 8px 4px;
+        background: var(--primary-bg);
+        border: none;
+        border-radius: 16px;
+        color: var(--text-primary);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 6px 6px 12px var(--shadow-dark),
+          -6px -6px 12px var(--shadow-light);
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        text-align: center;
+        white-space: nowrap;
+        font-size: 0.78rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+      }
+
+      .category-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 8px 8px 16px var(--shadow-dark),
+          -8px -8px 16px var(--shadow-light);
+      }
+
+      .category-btn.active {
+        background: var(--accent-gradient);
+        color: white;
+        box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2),
+          6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+      }
+
+      .cat-label {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+      }
+
+      .cat-count {
+        display: block;
+        font-size: 0.68rem;
+        font-weight: 700;
+        line-height: 1;
+        padding: 1px 7px;
+        border-radius: 8px;
+        background: rgba(102, 126, 234, 0.15);
+        color: var(--accent-color);
+        transition: all 0.3s ease;
+        min-width: 20px;
+      }
+
+      .category-btn.active .cat-count {
+        background: rgba(255, 255, 255, 0.25);
+        color: white;
+      }
+
+      .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 25px;
+        margin-bottom: 40px;
+        animation: toolsSlide 0.8s ease 1s both;
+      }
+
+      @keyframes toolsSlide {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+
+      .tool-card {
+        background: var(--primary-bg);
+        border-radius: 25px;
+        padding: 30px;
+        box-shadow: 12px 12px 24px var(--shadow-dark),
+          -12px -12px 24px var(--shadow-light);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .tool-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transition: left 0.8s;
+      }
+
+      .tool-card:hover::before {
+        left: 100%;
+      }
+
+      .tool-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 16px 16px 32px var(--shadow-dark),
+          -16px -16px 32px var(--shadow-light);
+      }
+
+      .tool-icon {
+        width: 52px;
+        height: 52px;
+        margin-bottom: 16px;
+        display: block;
+        border-radius: 12px;
+        object-fit: cover;
+        filter: drop-shadow(0 4px 8px rgba(102, 126, 234, 0.2));
+      }
+
+      .tool-icon-fallback {
+        font-size: 2.8rem;
+        margin-bottom: 16px;
+        display: block;
+      }
+
+      .tool-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 12px;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .tool-description {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 20px;
+        font-weight: 500;
+      }
+
+      .tool-link {
+        display: inline-block;
+        padding: 12px 24px;
+        background: var(--accent-gradient);
+        color: white;
+        text-decoration: none;
+        border-radius: 15px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 4px 4px 8px var(--shadow-dark),
+          -4px -4px 8px var(--shadow-light);
+      }
+
+      .tool-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 6px 6px 12px var(--shadow-dark),
+          -6px -6px 12px var(--shadow-light);
+      }
+
+      .tool-tags {
+        display: flex;
+        gap: 8px;
+        margin-top: 15px;
+        flex-wrap: wrap;
+      }
+
+      .tool-tag {
+        padding: 4px 12px;
+        background: rgba(102, 126, 234, 0.1);
+        color: var(--accent-color);
+        border-radius: 12px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        border: 1px solid rgba(102, 126, 234, 0.2);
+      }
+
+      footer {
+        margin-top: 40px;
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        padding: 25px;
+        background: var(--primary-bg);
+        border-radius: 20px;
+        box-shadow: 6px 6px 12px var(--shadow-dark),
+          -6px -6px 12px var(--shadow-light);
+        animation: footerFade 0.8s ease 1.2s both;
+      }
+
+      @keyframes footerFade {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      /* ── 回顶部按钮 ── */
+      /* ── 深色模式变量 ── */
+      body.dark {
+        --primary-bg: #1e1e2e;
+        --secondary-bg: #2a2a3e;
+        --shadow-light: #2a2a3e;
+        --shadow-dark: #12121e;
+        --text-primary: #c8cde8;
+        --text-secondary: #8b93c4;
+        --glass-bg: rgba(255, 255, 255, 0.05);
+        --glass-border: rgba(255, 255, 255, 0.08);
+      }
+
+      /* ── 悬浮按钮公共样式 ── */
+      #backToTop,
+      #themeToggle {
+        position: fixed;
+        right: 20px;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        transition: opacity 0.35s ease, visibility 0.35s ease,
+          transform 0.35s ease, box-shadow 0.25s ease;
+      }
+
+      /* ── 回顶部按钮 ── */
+      #backToTop {
+        bottom: 168px;
+        background: var(--accent-gradient);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.45),
+          4px 4px 10px var(--shadow-dark),
+          -2px -2px 8px var(--shadow-light);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(16px) scale(0.85);
+      }
+
+      #backToTop.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+      }
+
+      #backToTop:hover {
+        box-shadow: 0 10px 28px rgba(102, 126, 234, 0.55),
+          6px 6px 14px var(--shadow-dark),
+          -3px -3px 10px var(--shadow-light);
+        transform: translateY(-3px) scale(1.07);
+      }
+
+      #backToTop:active {
+        box-shadow: 0 3px 10px rgba(102, 126, 234, 0.35),
+          inset 3px 3px 8px rgba(0,0,0,0.2);
+        transform: scale(0.94);
+      }
+
+      #backToTop svg {
+        width: 22px;
+        height: 22px;
+        stroke: #ffffff;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+        filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+      }
+
+      /* ── 主题切换按钮 ── */
+      #themeToggle {
+        bottom: 104px;
+        background: var(--primary-bg);
+        box-shadow: 6px 6px 14px var(--shadow-dark),
+          -6px -6px 14px var(--shadow-light);
+        font-size: 22px;
+        line-height: 1;
+        transform: scale(1);
+      }
+
+      #themeToggle:hover {
+        box-shadow: 8px 8px 18px var(--shadow-dark),
+          -8px -8px 18px var(--shadow-light);
+        transform: translateY(-2px) scale(1.06);
+      }
+
+      #themeToggle:active {
+        box-shadow: inset 4px 4px 8px var(--shadow-dark),
+          inset -4px -4px 8px var(--shadow-light);
+        transform: scale(0.94);
+      }
+
+      @media (max-width: 768px) {
+        #backToTop {
+          right: 16px;
+          bottom: 158px;
+          width: 48px;
+          height: 48px;
+        }
+
+        #themeToggle {
+          right: 16px;
+          bottom: 100px;
+          width: 48px;
+          height: 48px;
+          font-size: 20px;
+        }
+
+        .container {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        .tools-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .categories {
+          grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+          gap: 10px;
+        }
+
+        .category-btn {
+          padding: 10px 6px;
+          font-size: 0.82rem;
+        }
+      }
+
+      /* ── 电脑端字体放大 ── */
+      @media (min-width: 769px) {
+        h1 {
+          font-size: 3.6rem;
+        }
+
+        .subtitle {
+          font-size: 1.1rem;
+        }
+
+        .search-box {
+          font-size: 1.2rem;
+        }
+
+        .category-btn {
+          font-size: 0.92rem;
+          padding: 10px 6px;
+        }
+
+        .cat-count {
+          font-size: 0.78rem;
+        }
+
+        .tool-title {
+          font-size: 1.6rem;
+        }
+
+        .tool-description {
+          font-size: 1.05rem;
+        }
+
+        .tool-link {
+          font-size: 1rem;
+          padding: 13px 28px;
+        }
+
+        footer {
+          font-size: 1.05rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🌐 智汇导航</h1>
+        <p class="subtitle">视界窗口 · 链接万物 · 极速开启</p>
+      </header>
+
+      <div class="search-container">
+        <input
+          type="text"
+          class="search-box"
+          id="searchBox"
+          placeholder="🔍 搜索关键词..."
+        />
+      </div>
+
+      <div class="categories">
+        <button class="category-btn active"><span class="cat-label">🌟 全部分类</span></button>
+        <button class="category-btn"><span class="cat-label">🌍 全球门户</span></button>
+        <button class="category-btn"><span class="cat-label">🤖 人工智能</span></button>
+        <button class="category-btn"><span class="cat-label">🐙 项目汇总</span></button>
+        <button class="category-btn"><span class="cat-label">👥 技术社区</span></button>
+        <button class="category-btn"><span class="cat-label">📖 学习成长</span></button>
+        <button class="category-btn"><span class="cat-label">🛠️ 综合效率</span></button>
+        <button class="category-btn"><span class="cat-label">📦 资源下载</span></button>
+        <button class="category-btn"><span class="cat-label">🎨 图像处理</span></button>
+        <button class="category-btn"><span class="cat-label">🎬 媒体创作</span></button>
+        <button class="category-btn"><span class="cat-label">📄 文档办公</span></button>
+        <button class="category-btn"><span class="cat-label">🖼️ 视觉灵感</span></button>
+        <button class="category-btn"><span class="cat-label">🌐 网络工具</span></button>
+        <button class="category-btn"><span class="cat-label">🔍 聚合搜索</span></button>
+        <button class="category-btn"><span class="cat-label">📥 视频提取</span></button>
+        <button class="category-btn"><span class="cat-label">📂 更多分类</span></button>
+      </div>
+
+      <div class="tools-grid" id="toolsGrid">
+      </div>
+
+      <footer>
+        <p>视界窗口 · 链接万物 · 极速开启</p>
+      </footer>
+    </div>
+
+    <!-- 回顶部按钮 -->
+    <button id="backToTop" title="回到顶部" aria-label="回到顶部">
+      <svg viewBox="0 0 24 24">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+
+    <!-- 主题切换按钮 -->
+    <button id="themeToggle" title="切换主题" aria-label="切换深色/浅色模式">☀️</button>
+
+    <script>
+      const searchBox = document.getElementById('searchBox')
+      const grid = document.getElementById('toolsGrid')
+      const categoryBtns = document.querySelectorAll('.category-btn')
+
+      // 按钮索引对应 sites_n.json（第0个按钮=全部，第1个=sites_1.json，第2个=sites_2.json...）
+      categoryBtns.forEach((btn, i) => {
+        btn.dataset.index = i  // 0=全部，1~n=对应json编号
+      })
+
+      let currentIndex = 0       // 当前选中的按钮索引
+      let allSites = []          // 全部已加载的站点数据 [{...site, _catIndex}]
+      let loadedIndexes = new Set() // 已加载过的json编号
+
+      const totalCategories = categoryBtns.length - 1  // 分类数量（不含"全部"）
+
+      // ── 渲染卡片 ──────────────────────────────────────────
+      function renderCards(sites, searchTerm = '') {
+        grid.innerHTML = ''
+        const term = searchTerm.toLowerCase().trim()
+        const filtered = sites.filter(site => {
+          if (!term) return true
+          return (
+            (site.title || '').toLowerCase().includes(term) ||
+            (site.description || '').toLowerCase().includes(term)
+          )
+        })
+        if (filtered.length === 0) {
+          grid.innerHTML = '<p style="color:var(--text-secondary);text-align:center;padding:40px;grid-column:1/-1">暂无内容</p>'
+          return
+        }
+        filtered.forEach((site, i) => {
+          const card = document.createElement('div')
+          card.className = 'tool-card'
+          const iconHtml = site.icon
+            ? `<img class="tool-icon" src="assets/siteicons/${site.icon}" alt="${site.title}" onerror="this.style.display='none'">`
+            : `<span class="tool-icon-fallback">🌐</span>`
+          card.innerHTML = `
+            ${iconHtml}
+            <h3 class="tool-title">${site.title || ''}</h3>
+            <p class="tool-description">${site.description || ''}</p>
+            <a href="${site.url || '#'}" target="_blank" class="tool-link">访问</a>
+          `
+          card.addEventListener('click', function (e) {
+            if (!e.target.classList.contains('tool-link')) {
+              const link = this.querySelector('.tool-link')
+              if (link) link.click()
+            }
+          })
+          grid.appendChild(card)
+        })
+      }
+
+      // ── 更新按钮数字 ───────────────────────────────────────
+      function updateCount(index) {
+        if (index === 0) {
+          // 全部按钮显示总数
+          const btn = categoryBtns[0]
+          let badge = btn.querySelector('.cat-count')
+          if (!badge) {
+            badge = document.createElement('span')
+            badge.className = 'cat-count'
+            btn.appendChild(badge)
+          }
+          badge.textContent = allSites.length
+        } else {
+          const btn = categoryBtns[index]
+          if (!btn) return
+          const count = allSites.filter(s => s._catIndex === index).length
+          let badge = btn.querySelector('.cat-count')
+          if (!badge) {
+            badge = document.createElement('span')
+            badge.className = 'cat-count'
+            btn.appendChild(badge)
+          }
+          badge.textContent = count
+        }
+      }
+
+      // ── 加载单个 json ──────────────────────────────────────
+      async function loadCategory(index) {
+        if (loadedIndexes.has(index)) return  // 已加载过，跳过
+        try {
+          const res = await fetch(`sites/sites_${index}.json`)
+          if (!res.ok) return
+          const data = await res.json()
+          const arr = Array.isArray(data) ? data : []
+          arr.forEach(site => site._catIndex = index)
+          allSites = allSites.concat(arr)
+          loadedIndexes.add(index)
+          updateCount(index)
+          updateCount(0)  // 同步更新"全部"总数
+        } catch (e) {
+          console.warn(`sites_${index}.json 加载失败`, e)
+        }
+      }
+
+      // ── 加载并展示 ─────────────────────────────────────────
+      async function showCategory(index) {
+        currentIndex = index
+        const term = searchBox.value
+
+        if (index === 0) {
+          // 全部：加载所有未加载的json
+          const tasks = []
+          for (let i = 1; i <= totalCategories; i++) {
+            if (!loadedIndexes.has(i)) tasks.push(loadCategory(i))
+          }
+          await Promise.all(tasks)
+          renderCards(allSites, term)
+        } else {
+          // 单分类
+          await loadCategory(index)
+          const catSites = allSites.filter(s => s._catIndex === index)
+          renderCards(catSites, term)
+        }
+      }
+
+      // ── 分类按钮点击 ───────────────────────────────────────
+      categoryBtns.forEach((btn) => {
+        btn.addEventListener('click', function () {
+          categoryBtns.forEach(b => b.classList.remove('active'))
+          this.classList.add('active')
+          showCategory(parseInt(this.dataset.index))
+        })
+      })
+
+      // ── 搜索 ───────────────────────────────────────────────
+      searchBox.addEventListener('input', function () {
+        const term = this.value.toLowerCase().trim()
+        if (currentIndex === 0) {
+          renderCards(allSites, term)
+        } else {
+          const catSites = allSites.filter(s => s._catIndex === currentIndex)
+          renderCards(catSites, term)
+        }
+      })
+
+      // ── 键盘快捷键 ─────────────────────────────────────────
+      document.addEventListener('keydown', function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+          e.preventDefault()
+          searchBox.focus()
+        }
+        if (e.key === 'Escape' && document.activeElement === searchBox) {
+          searchBox.value = ''
+          const catSites = currentIndex === 0 ? allSites : allSites.filter(s => s._catIndex === currentIndex)
+          renderCards(catSites)
+          searchBox.blur()
+        }
+      })
+
+      // ── 初始化：显示全部分类，同时后台预加载所有json更新数字 ──
+      showCategory(0).then(() => {
+        // 后台静默预加载其余所有分类，仅更新数字，不切换显示
+        // （showCategory(0) 已全量加载，此处无需额外操作，updateCount会自动同步）
+      })
+      // ── 回顶部按钮 ───────────────────────────────────────────
+      const backToTopBtn = document.getElementById('backToTop')
+      const SCROLL_THRESHOLD = 300
+
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > SCROLL_THRESHOLD) {
+          backToTopBtn.classList.add('visible')
+        } else {
+          backToTopBtn.classList.remove('visible')
+        }
+      }, { passive: true })
+
+      backToTopBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      })
+
+      // ── 主题切换 ─────────────────────────────────────────────
+      const themeToggleBtn = document.getElementById('themeToggle')
+      const themeColorMeta = document.getElementById('themeColorMeta')
+      const DARK_KEY = 'zhihui-dark-mode'
+      const THEME_COLOR_LIGHT = '#e6e7ee'
+      const THEME_COLOR_DARK  = '#1e1e2e'
+      let themeTimer = null
+
+      function applyTheme(isDark, animate = false) {
+        // 同步更新浏览器顶栏颜色
+        themeColorMeta.setAttribute('content', isDark ? THEME_COLOR_DARK : THEME_COLOR_LIGHT)
+
+        if (animate) {
+          // 清除上一次可能还在跑的定时器
+          if (themeTimer) clearTimeout(themeTimer)
+
+          document.body.classList.add('theme-transitioning')
+          // 在下一帧切换主题，让浏览器先把 transition 注册好
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              document.body.classList.toggle('dark', isDark)
+              themeToggleBtn.textContent = isDark ? '🌙' : '☀️'
+              themeToggleBtn.title = isDark ? '切换浅色模式' : '切换深色模式'
+            })
+          })
+          // transition 结束后移除类（duration 0.45s，留 50ms 余量）
+          themeTimer = setTimeout(() => {
+            document.body.classList.remove('theme-transitioning')
+            themeTimer = null
+          }, 500)
+        } else {
+          document.body.classList.toggle('dark', isDark)
+          themeToggleBtn.textContent = isDark ? '🌙' : '☀️'
+          themeToggleBtn.title = isDark ? '切换浅色模式' : '切换深色模式'
+        }
+      }
+
+      // 读取本地保存的偏好
+      const savedDark = localStorage.getItem(DARK_KEY)
+      const prefersDark = savedDark !== null
+        ? savedDark === 'true'
+        : window.matchMedia('(prefers-color-scheme: dark)').matches
+      applyTheme(prefersDark, false)  // 初始加载不做动画
+
+      themeToggleBtn.addEventListener('click', function () {
+        const isDark = !document.body.classList.contains('dark')
+        applyTheme(isDark, true)  // 用户点击才做动画
+        localStorage.setItem(DARK_KEY, isDark)
+      })
+    </script>
+
+    <!-- 源码防护脚本 -->
+    <script src="src/scripts/security.js" defer></script>
+  </body>
+</html>
