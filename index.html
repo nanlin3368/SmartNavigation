@@ -779,6 +779,8 @@
             if (!loadedIndexes.has(i)) tasks.push(loadCategory(i))
           }
           await Promise.all(tasks)
+          // 并发加载完成后按分类顺序排序，保证每次顺序一致
+          allSites.sort((a, b) => a._catIndex - b._catIndex)
           renderCards(allSites, term)
         } else {
           // 单分类
